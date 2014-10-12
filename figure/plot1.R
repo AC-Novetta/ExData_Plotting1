@@ -1,0 +1,7 @@
+unzip("C:/Andrea/IBG_SupportingInfo/Classes/DataScience_Specialization/ExploratoryDataAnalysis/CourseProjects/exdata-data-household_power_consumption.zip")
+fullRecord <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", quote = "")
+fullRecord$Date2 <- as.Date( as.character(fullRecord$Date), "%d/%m/%Y")
+SubSet <- subset(fullRecord, Date2 >= as.Date("2007-02-01") & Date2 < as.Date("2007-02-03"))
+png("plot1.png")
+hist(as.numeric(as.character(SubSet$Global_active_power)), main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red")
+dev.off()
